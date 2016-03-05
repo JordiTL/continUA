@@ -1,0 +1,31 @@
+<md-toolbar ng-controller="NavBarCtrl as navbarCtrl">
+
+  <div class="md-toolbar-tools">
+
+    <md-button class="md-icon-button" aria-label="Settings" ng-click="navbarCtrl.toggle()">
+      <md-icon md-font-set="material-icons">menu</md-icon>
+    </md-button>
+
+    <h2>
+      <span>{{navbarCtrl.appName}}</span>
+    </h2>
+    <span flex></span>
+
+    <div ng-controller="MenuCtrl as menuCtrl" ng-init="menuCtrl.loadTestEntries()" ng-show="menuCtrl.model.showButton">
+      <md-menu>
+        <md-button class="md-icon-button" aria-label="More" ng-click="menuCtrl.openMenu($mdOpenMenu, $event)">
+          <md-icon md-font-set="material-icons">more_vert</md-icon>
+        </md-button>
+        <md-menu-content width="4">
+          <md-menu-item ng-repeat="entry in menuCtrl.model.menuEntries">
+            <md-button ng-click="entry.callback()">
+              <md-icon md-font-set="material-icons">{{entry.icon}}</md-icon>
+              {{entry.label}}
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </div>
+
+</md-toolbar>
