@@ -1,0 +1,49 @@
+<section class="sidebar-wrapper" layout="row" flex ng-controller="SideBarCtrl as sidebarCtrl">
+  <md-sidenav class="sidebar md-sidenav-left md-whiteframe-z2" md-component-id="left">
+    <md-toolbar>
+      <div class="profile-wrapper">
+        <div class="profile-image" ng-style="{'background-image': 'url({{sidebarCtrl.model.profilePhoto}})'}"></div>
+        <span class="md-subhead">{{sidebarCtrl.model.email}}</span>
+      </div>
+    </md-toolbar>
+    <md-content layout-padding>
+      <md-menu-content width="4">
+        <md-menu-item>
+          <md-button>
+            <md-icon md-font-set="material-icons">favorite</md-icon>
+            Entry 1
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button>
+            <md-icon md-font-set="material-icons">delete</md-icon>
+            Entry 2
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button>
+            <md-icon md-font-set="material-icons">grade</md-icon>
+            Entry 3
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button>
+            <md-icon md-font-set="material-icons">help</md-icon>
+            Entry 4
+          </md-button>
+        </md-menu-item>
+        <md-menu-divider></md-menu-divider>
+        <md-menu-item>
+          <md-button>
+            Other Entry 1
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button>
+            Other Entry 2
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-content>
+  </md-sidenav>
+</section>
