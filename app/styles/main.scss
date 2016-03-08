@@ -1,8 +1,8 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/"; // bower:scss
  @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
  // endbower
- @import "compass/css3";
- @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
+@import "compass/css3";
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -82,34 +82,137 @@ body {
     border-bottom: 0;
   }
 }
-
-md-content.content-wrapper{
-  height:100%;
+md-content.content-wrapper {
+  height: 100%;
 }
-
-.sidebar{
-  .profile-wrapper .profile-image{
-    width:150px;
-    height:150px;
+.sidebar {
+  .profile-wrapper .profile-image {
+    width: 150px;
+    height: 150px;
     @include border-radius(100%);
-    margin:30px auto;
-    background-repeat:no-repeat;
-    background-position:center center;
+    margin: 30px auto;
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: 150px;
   }
-  .profile-wrapper .md-subhead{
-    margin:20px;
-    margin-top:0px;
+  .profile-wrapper .md-subhead {
+    margin: 0 20px 20px;
     text-align: center;
-    display:block;
+    display: block;
   }
-  md-menu-divider{
+  md-menu-divider {
     border-bottom: solid #DDD 1px;
   }
-  md-content, md-menu-content{
-    margin:0;
-    padding:0;
+  md-content,
+  md-menu-content {
+    margin: 0;
+    padding: 0;
+  }
+}
+.details-container {
+  background-color: #DDD;
+p{
+  text-align: justify;
+}
+.join-button-wrapper{
+text-align: center;
+.md-button{
+  display:inline-block;
+}
+}
+  .favorited{
+    color: #F55;
   }
 
-
+  .md-card-image{
+    height:200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+  }
+  .score-wrapper {
+    margin-bottom: 20px;
+    padding-top: 10px;
+    .score-bar-wrapper {
+      float: left;
+      width: 100%;
+    }
+    .score-bar-label-left {
+      display: inline-block;
+      float: left;
+    }
+    .score-bar-label-right {
+      display: inline-block;
+      float: right;
+    }
+    .score-bar-title {
+      display: block;
+      text-align: center;
+    }
+  }
+  .keyword-wrapper {
+    text-align: center;
+    .keyword {
+      -moz-user-select: none;
+      align-items: center;
+      background: transparent none repeat scroll 0 0;
+      border: 0 none;
+      border-radius: 3px;
+      box-sizing: border-box;
+      color: currentcolor;
+      display: inline-block;
+      font-family: inherit;
+      font-size: 14px;
+      font-style: inherit;
+      font-variant: inherit;
+      font-weight: 500;
+      line-height: 36px;
+      margin: 6px 8px;
+      min-height: 36px;
+      min-width: 88px;
+      outline: medium none;
+      overflow: hidden;
+      padding: 0 6px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) 0s, background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+      background-color: rgb(63, 81, 181);
+      color: rgba(255, 255, 255, 0.87);
+    }
+  }
+  .days-wrapper {
+    text-align: center;
+    md-divider {
+      margin-bottom: 40px;
+      margin-top: 40px;
+    }
+    .day {
+      margin: 10px;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      display: inline-block;
+      @include border-radius(50%);
+      border: solid rgb(63, 81, 181) 1px;
+      color: rgb(63, 81, 181);
+    }
+    .day-active {
+      background-color: rgb(63, 81, 181);
+      color: #fff;
+      font-weight: bold;
+    }
+    .md-subhead {
+      display: block;
+    }
+  }
+  .days-time{
+    display:block;
+    margin:10px;
+    font-weight: bold;
+  }
 }
