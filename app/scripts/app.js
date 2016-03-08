@@ -22,14 +22,20 @@ angular
     $mdThemingProvider.theme('continua').primaryPalette('indigo');
     $mdThemingProvider.setDefaultTheme('continua');
   })
-  .config(function($routeProvider) {
+  .config(['$routeProvider', function($routeProvider) {
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/details', {
+        templateUrl: 'views/details.html',
+        controller: 'DetailsCtrl',
+        controllerAs: 'details'
+      })
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }]);

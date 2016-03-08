@@ -1,0 +1,96 @@
+
+<div flex-xs layout="column" class="details-container" ng-init="details.loadMenuEntries()">
+  <md-card>
+    <div ng-style="{'background-image': 'url({{details.model.main.image}})'}" class="md-card-image"></div>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{details.model.main.title}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <p>{{details.model.main.briefDescription}}</p>
+      <div class="join-button-wrapper">
+      <md-button class="md-raised md-primary" aria-label="Comments" ng-click="details.commentAction()">
+        ¡Inscríbeme!
+      </md-button>
+    </div>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button class="md-icon-button" aria-label="Favorite" ng-click="details.favAction()">
+        <md-icon md-font-set="material-icons" ng-class="{'favorited': details.model.main.favorited}">favorite</md-icon>
+      </md-button>
+
+      <md-button class="md-icon-button" aria-label="Share" ng-click="details.shareAction()">
+        <md-icon md-font-set="material-icons">share_arrow</md-icon>
+      </md-button>
+
+      <md-button class="md-icon-button" aria-label="Comments" ng-click="details.commentAction()">
+        <md-icon md-font-set="material-icons">comment_account_outline</md-icon>
+      </md-button>
+    </md-card-actions>
+  </md-card>
+
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Objetivos</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <ul>
+        <li ng-repeat="goal in details.model.goals">{{goal}}</li>
+      </ul>
+    </md-card-content>
+  </md-card>
+
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Días</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <div class="days-wrapper" ng-repeat="group in details.model.groups">
+        <span class="md-subhead">{{group.title}}</span>
+        <div class="day" ng-class="{ 'day-active': day.active }" ng-repeat="day in group.lessons">
+          {{day.title}}
+        </div>
+        <span class="days-time">{{group.time}}</span>
+        <md-divider ng-if="!$last"></md-divider>
+      </div>
+    </md-card-content>
+  </md-card>
+
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Características</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <div class="score-wrapper" ng-repeat="score in details.model.scores">
+        <span class="score-bar-title">{{score.title}}</span>
+        <span class="score-bar-label-left">Poco</span>
+        <span class="score-bar-label-right">Mucho</span>
+        <div class="score-bar-wrapper">
+          <md-progress-linear md-mode="determinate" value="{{score.value}}"></md-progress-linear>
+        </div>
+      </div>
+    </md-card-content>
+  </md-card>
+
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Etiquetas</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <md-chips ng-model="details.model.keywords" readonly="true">
+        <md-chip-template>
+          {{$chip}}
+        </md-chip-template>
+      </md-chips>
+    </md-card-content>
+  </md-card>
+</div>
