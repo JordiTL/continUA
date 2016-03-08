@@ -12,6 +12,14 @@ angular.module('continuaApp')
 
     var self = this;
 
+    self.showNavBar = function() {
+      $rootScope.$broadcast('NavBar.show');
+    };
+
+    self.hideNavBar = function() {
+      $rootScope.$broadcast('NavBar.hide');
+    };
+
     self.authExternalProvider = function(provider) {
       console.log("Login con " + provider);
     };

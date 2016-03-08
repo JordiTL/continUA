@@ -1,7 +1,7 @@
-<div id="login-container">
+<div id="login-container" ng-init="login.hideNavBar()">
   <img id="login-logo" src="images/main-logo.png"/>
   <div layout="row" layout-wrap>
-    <md-button id="login-button" class="md-raised" aria-label="Comments" ng-click="login.authExternalProvider('google')">
+    <md-button id="login-button" class="md-raised" aria-label="Comments" ng-click="login.showNavBar()">
       Entrar con google
     </md-button>
   </div>
