@@ -216,3 +216,28 @@ text-align: center;
     font-weight: bold;
   }
 }
+
+#login-container {
+  position: relative;
+  height: 100%;
+  //background-image: url("http://kineticperformance.es/wp-content/uploads/2015/03/UA-060115-IMG_0801-resize.jpg");
+background-image: url("http://www.efeagro.com/wp-content/blogs.dir/2/files_mf/cache/th_a42a72a425c164dd4407cbac84a3d92a_CAMPUS-OCTUBRE-2013-92072.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;;
+  background-size: auto 100%;
+  text-align: center;
+  #login-logo {
+    position: relative;
+    width: 100%;
+    padding: 3em;
+  }
+  #login-button {
+    position: absolute;
+    bottom: 50px;
+    background-color: rgba(250,250,250,0.6);
+    padding: 5px;
+    width: 100%;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+}
