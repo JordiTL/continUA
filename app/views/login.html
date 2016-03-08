@@ -1,1 +1,21 @@
-<p>This is the login view.</p>
+<div layout="row">
+  <div flex flex-gt-sm="50" offset-gt-sm="25">
+    <div>
+      <img src="http://www.ua.es/en/imagenes/banners/igualdad.jpg"/>
+    </div>
+    <md-content layout-padding>
+      <form name="userForm">
+        <div flex>
+          <md-button flex="100" style="font-size:18px;" ng-click="login.authExternalProvider('Google')">
+            <md-button class="md-fab md-primary" aria-label="Use Android">
+              <i class="material-icons">cake</i>
+              <md-icon md-svg-src="social:cake">
+              </md-icon>
+            </md-button>
+            <span>Conectar con Google+</span>
+          </md-button>
+        </div>
+      </form>
+    </md-content>
+  </div>
+</div>

@@ -8,10 +8,12 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('LoginCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('LoginCtrl', ['$rootScope', '$log', function($rootScope, $log) {
+
+    var self = this;
+
+    self.authExternalProvider = function(provider) {
+      console.log("Login con " + provider);
+    };
+
+  }]);
