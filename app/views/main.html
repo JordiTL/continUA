@@ -1,13 +1,41 @@
-<div ng-init="main.loadTestMenuEntries()">
-  <md-list>
-      <md-list-item class="md-3-line" ng-repeat="item in main.messages">
-
-        <div class="md-list-item-text">
-          <h3>{{item.what}}</h3>
-          <h4>{{item.who}}</h4>
-          <p>{{item.notes}}</p>
+<div flex-xs layout="column" id="main-container">
+  <md-card ng-repeat="activity in main.activities | filter:{title: main.filter}">
+    <div ng-style="{'background-image': 'url({{activity.image}})'}" class="md-card-image"></div>
+    <md-card-title>
+      <md-card-title-text>
+        <div layout="row">
+          <div flex>
+            <span class="md-headline">{{activity.title}}</span>
+          </div>
+          <div flex style="text-align: right;">
+            <span >
+              <md-button class="md-icon-button" aria-label="Share" ng-click="main.shareAction()">
+                <md-icon md-font-set="material-icons" style="color : green;">remove_red_eye</md-icon>
+              </md-button>
+            </span>
+          </div>
         </div>
-        <md-divider md-inset ng-if="!$last"></md-divider>
-      </md-list-item>
-    </md-list>
+      </md-card-title-text>
+    </md-card-title>
+    <!--md-card-content>
+      <div class="join-button-wrapper">
+        <md-button class="md-raised md-primary" aria-label="Comments" ng-click="main.commentAction()">
+          ¡Inscríbeme!
+        </md-button>
+      </div>
+    </md-card-content-->
+    <!--md-card-actions layout="row" layout-align="end center">
+      <md-button class="md-icon-button" aria-label="Favorite" ng-click="main.favAction()">
+        <md-icon md-font-set="material-icons" ng-class="{'favorited': activity.favorited}">favorite</md-icon>
+      </md-button>
+
+      <md-button class="md-icon-button" aria-label="Share" ng-click="main.shareAction()">
+        <md-icon md-font-set="material-icons">share_arrow</md-icon>
+      </md-button>
+
+      <md-button class="md-icon-button" aria-label="Comments" ng-click="main.commentAction()">
+        <md-icon md-font-set="material-icons">comment_account_outline</md-icon>
+      </md-button>
+    </md-card-actions-->
+  </md-card>
 </div>

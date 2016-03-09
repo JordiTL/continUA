@@ -1,6 +1,6 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/"; // bower:scss
- @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
- // endbower
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
 @import "compass/css3";
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
 .browsehappy {
@@ -109,23 +109,37 @@ md-content.content-wrapper {
     padding: 0;
   }
 }
+.search-bar-container {
+  md-input-container {
+    width : 100%;
+    label {
+      color: white !important;
+      opacity: 0.5 !important;
+      font-size: 0.8em !important;
+    }
+    input {
+      width : 100%;
+      color: white !important;
+      margin-top: -8px !important;
+    }
+  }
+}
 .details-container {
   background-color: #DDD;
-p{
-  text-align: justify;
-}
-.join-button-wrapper{
-text-align: center;
-.md-button{
-  display:inline-block;
-}
-}
-  .favorited{
+  p {
+    text-align: justify;
+  }
+  .join-button-wrapper {
+    text-align: center;
+    .md-button {
+      display: inline-block;
+    }
+  }
+  .favorited {
     color: #F55;
   }
-
-  .md-card-image{
-    height:200px;
+  .md-card-image {
+    height: 200px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
@@ -210,20 +224,19 @@ text-align: center;
       display: block;
     }
   }
-  .days-time{
-    display:block;
-    margin:10px;
+  .days-time {
+    display: block;
+    margin: 10px;
     font-weight: bold;
   }
 }
-
 #login-container {
   position: relative;
   height: 100%;
   //background-image: url("http://kineticperformance.es/wp-content/uploads/2015/03/UA-060115-IMG_0801-resize.jpg");
-background-image: url("http://www.efeagro.com/wp-content/blogs.dir/2/files_mf/cache/th_a42a72a425c164dd4407cbac84a3d92a_CAMPUS-OCTUBRE-2013-92072.jpg");
+  background-image: url("http://www.efeagro.com/wp-content/blogs.dir/2/files_mf/cache/th_a42a72a425c164dd4407cbac84a3d92a_CAMPUS-OCTUBRE-2013-92072.jpg");
   background-position: center center;
-  background-repeat: no-repeat;;
+  background-repeat: no-repeat;
   background-size: auto 100%;
   text-align: center;
   #login-logo {
@@ -237,7 +250,19 @@ background-image: url("http://www.efeagro.com/wp-content/blogs.dir/2/files_mf/ca
     background-color: rgba(250,250,250,0.6);
     padding: 5px;
     width: 100%;
-    margin-left: 0px !important;
-    margin-right: 0px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+#main-container {
+  background-color: #DDD;
+  md-card-title {
+    padding: 5px !important;
+  }
+  .md-card-image {
+    height: 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
   }
 }
