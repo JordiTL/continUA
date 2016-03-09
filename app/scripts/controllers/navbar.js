@@ -13,7 +13,9 @@ angular.module('continuaApp')
 
     self.appName = "ContinUA";
 
-    var broadcastEvent = function (eventName) {
+    self.showNavBar = true;
+
+    var broadcastEvent = function(eventName) {
       $log.debug('Broadcasting \'' + eventName + '\'...');
       $rootScope.$broadcast(eventName);
     };
@@ -22,6 +24,13 @@ angular.module('continuaApp')
       broadcastEvent('SideBarLeft.toggle');
     };
 
+    $rootScope.$on('NavBar.show', function(event) {
+      self.showNavBar = true;
+    });
+
+    $rootScope.$on('NavBar.hide', function(event) {
+      self.showNavBar = false;
+    });
 
 
   }]);
