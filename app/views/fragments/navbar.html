@@ -1,6 +1,5 @@
 <md-toolbar ng-controller="NavBarCtrl as navbarCtrl" ng-show="navbarCtrl.showNavBar">
-
-  <div class="md-toolbar-tools">
+  <div class="md-toolbar-tools" ng-hide="navbarCtrl.showSearchBar">
 
     <md-button class="md-icon-button" aria-label="Settings" ng-click="navbarCtrl.toggle()">
       <md-icon md-font-set="material-icons">menu</md-icon>
@@ -10,8 +9,10 @@
       <span>{{navbarCtrl.appName}}</span>
     </h2>
     <span flex></span>
-
     <div ng-controller="MenuCtrl as menuCtrl" ng-init="menuCtrl.loadTestEntries()" ng-show="menuCtrl.model.showButton">
+      <md-button class="md-icon-button" aria-label="Settings" ng-click="navbarCtrl.search()">
+        <md-icon md-font-set="material-icons">search</md-icon>
+      </md-button>
       <md-menu>
         <md-button class="md-icon-button" aria-label="More" ng-click="menuCtrl.openMenu($mdOpenMenu, $event)">
           <md-icon md-font-set="material-icons">more_vert</md-icon>
@@ -25,6 +26,21 @@
           </md-menu-item>
         </md-menu-content>
       </md-menu>
+    </div>
+  </div>
+
+  <div class="md-toolbar-tools" ng-show="navbarCtrl.showSearchBar">
+
+    <div flex="20">
+      <md-button class="md-icon-button" aria-label="Settings" ng-click="navbarCtrl.back()">
+        <md-icon md-font-set="material-icons">keyboard_arrow_left</md-icon>
+      </md-button>
+    </div>
+    <div class="search-bar-container" flex="80">
+      <md-input-container>
+        <label ng-show="{{navbarCtrl.searchText.length == 0}}">Buscar...</label>
+        <input ng-model="navbarCtrl.searchText">
+      </md-input-container>
     </div>
   </div>
 

@@ -12,8 +12,10 @@ angular.module('continuaApp')
     var self = this;
 
     self.appName = "ContinUA";
+    self.searchText = "";
 
     self.showNavBar = true;
+    self.showSearchBar = false;
 
     var broadcastEvent = function(eventName) {
       $log.debug('Broadcasting \'' + eventName + '\'...');
@@ -22,6 +24,14 @@ angular.module('continuaApp')
 
     self.toggle = function() {
       broadcastEvent('SideBarLeft.toggle');
+    };
+
+    self.search = function() {
+      self.showSearchBar = true;
+    };
+
+    self.back = function() {
+      self.showSearchBar = false;
     };
 
     $rootScope.$on('NavBar.show', function(event) {
