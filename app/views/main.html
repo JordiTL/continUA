@@ -1,4 +1,4 @@
-<div flex-xs layout="column" id="main-container">
+<div flex-xs layout="column" id="main-container" ng-init="main.showNavBar()">
   <md-card ng-repeat="activity in main.activities | filter:{title: main.filter}">
     <div ng-style="{'background-image': 'url({{activity.image}})'}" class="md-card-image"></div>
     <md-card-title>
