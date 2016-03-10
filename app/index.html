@@ -17,19 +17,19 @@
     <!-- endbuild -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
-  <body ng-app="continuaApp" ng-cloak>
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+  <body ng-app="continuaApp" layout="row" ng-cloak>
+    <!--[if lte IE 8]> <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
 
     <!-- Add your site or application content here -->
 
-    <md-content class="content-wrapper">
+    <div layout="column" layout-fill>
       <ng-include src="'views/fragments/navbar.html'"></ng-include>
-      <ng-include src="'views/fragments/sidebar.html'"></ng-include>
-      <ng-view></ng-view>
-    </md-content>
-
+      <!-- be careful: nothing between md-toolbar and md-content -->
+      <md-content class="content-wrapper" flex>
+        <ng-include src="'views/fragments/sidebar.html'"></ng-include>
+        <ng-view></ng-view>
+      </md-content>
+    </div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -47,17 +47,17 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/details.js"></script>
-        <script src="scripts/controllers/login.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/details.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <!-- endbuild -->
 
-        <!-- fragment controller -->
-        <script src="scripts/controllers/navbar.js"></script>
-        <script src="scripts/controllers/sidebar.js"></script>
-        <script src="scripts/controllers/menu.js"></script>
-        <script src="scripts/services/broadcast.js"></script>
-</body>
+    <!-- fragment controller -->
+    <script src="scripts/controllers/navbar.js"></script>
+    <script src="scripts/controllers/sidebar.js"></script>
+    <script src="scripts/controllers/menu.js"></script>
+    <script src="scripts/services/broadcast.js"></script>
+  </body>
 </html>
