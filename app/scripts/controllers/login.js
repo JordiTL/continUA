@@ -8,16 +8,16 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('LoginCtrl', ['$rootScope', '$log', function($rootScope, $log) {
+  .controller('LoginCtrl', ['$rootScope', '$log', 'broadcastService', '$location', function($rootScope, $log, sharedService, $location) {
 
     var self = this;
 
-    self.showNavBar = function() {
-      $rootScope.$broadcast('NavBar.show');
+    self.login = function() {
+      $location.path('/main');
     };
 
     self.hideNavBar = function() {
-      $rootScope.$broadcast('NavBar.hide');
+      sharedService.hideNavBar();
     };
 
     self.authExternalProvider = function(provider) {
