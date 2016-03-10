@@ -34,7 +34,7 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/details', {
+      .when('/details/:activityID', {
         templateUrl: 'views/details.html',
         controller: 'DetailsCtrl',
         controllerAs: 'details'
