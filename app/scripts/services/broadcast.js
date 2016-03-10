@@ -1,6 +1,6 @@
 'use strict';
 
-angular.factory('broadcastService', function ($rootScope) {
+angular.module('continuaApp').factory('broadcastService', function ($rootScope) {
     var sharedService = {};
 
     sharedService.message = '';
