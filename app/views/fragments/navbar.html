@@ -10,7 +10,7 @@
     </h2>
     <span flex></span>
     <div ng-controller="MenuCtrl as menuCtrl" ng-init="menuCtrl.loadTestEntries()" ng-show="menuCtrl.model.showButton">
-      <md-button class="md-icon-button" aria-label="Settings" ng-click="navbarCtrl.search()">
+      <md-button class="md-icon-button" aria-label="Settings" ng-click="navbarCtrl.showSearch()">
         <md-icon md-font-set="material-icons">search</md-icon>
       </md-button>
       <md-menu>
@@ -38,8 +38,8 @@
     </div>
     <div class="search-bar-container" flex="80">
       <md-input-container>
-        <label ng-show="{{navbarCtrl.searchText.length == 0}}">Buscar...</label>
-        <input ng-model="navbarCtrl.searchText">
+        <label></label>
+        <input ng-model="navbarCtrl.searchText" ng-keyup="navbarCtrl.search($event)">
       </md-input-container>
     </div>
   </div>

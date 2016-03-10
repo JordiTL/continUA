@@ -1,18 +1,26 @@
 'use strict';
 
-angular.module('continuaApp').factory('broadcastService', function ($rootScope) {
-    var sharedService = {};
+angular.module('continuaApp').factory('broadcastService', function($rootScope) {
+  var sharedService = {};
 
-    sharedService.message = '';
+  sharedService.message = '';
 
-    sharedService.search = function (msg) {
-        this.message = msg;
-        this.broadcastItem("Search");
-    };
+  sharedService.search = function(msg) {
+    this.message = msg;
+    this.broadcastItem("Search");
+  };
 
-    sharedService.broadcastItem = function (event) {
-        $rootScope.$broadcast(event);
-    };
+  sharedService.showNavBar = function() {
+    sharedService.broadcastItem('NavBar.show');
+  };
 
-    return sharedService;
+  sharedService.hideNavBar = function() {
+    sharedService.broadcastItem('NavBar.hide');
+  };
+
+  sharedService.broadcastItem = function(event) {
+    $rootScope.$broadcast(event);
+  };
+
+  return sharedService;
 });

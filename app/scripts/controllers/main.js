@@ -8,7 +8,7 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('MainCtrl',['$rootScope', '$log', function($rootScope, $log) {
+  .controller('MainCtrl', ['$rootScope', '$log', 'broadcastService', function($rootScope, $log, sharedService) {
 
     var self = this;
     var yoga = {};
@@ -25,4 +25,12 @@ angular.module('continuaApp')
     self.activities.push(fencing);
     self.activities.push(soccer);
     self.filter = '';
+
+    self.showNavBar = function() {
+      sharedService.showNavBar();
+    };
+
+    $rootScope.$on('Search', function() {
+      self.filter = sharedService.message;
+    });
   }]);

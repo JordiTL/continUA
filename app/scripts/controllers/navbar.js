@@ -8,7 +8,7 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('NavBarCtrl', ['$rootScope', '$log', function($rootScope, $log) {
+  .controller('NavBarCtrl', ['$rootScope', '$log', 'broadcastService', function($rootScope, $log, sharedService) {
     var self = this;
 
     self.appName = "ContinUA";
@@ -26,8 +26,12 @@ angular.module('continuaApp')
       broadcastEvent('SideBarLeft.toggle');
     };
 
-    self.search = function() {
+    self.showSearch = function(search) {
       self.showSearchBar = true;
+    };
+
+    self.search = function(event) {
+      sharedService.search(self.searchText);
     };
 
     self.back = function() {
