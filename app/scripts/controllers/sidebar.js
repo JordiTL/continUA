@@ -45,4 +45,14 @@ angular.module('continuaApp')
       self.close();
       $location.path("/community");
     };
+
+    self.home = function() {
+      self.close();
+      $location.path("/main");
+    };
+
+    self.exit = function() {
+      self.close();
+      $location.path("/");
+    };
   }]);
