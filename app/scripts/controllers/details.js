@@ -8,7 +8,7 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('DetailsCtrl', ['$rootScope','$routeParams', '$mdToast', '$log', function($rootScope, $routeParams, $mdToast, $log) {
+  .controller('DetailsCtrl', ['$rootScope', '$routeParams', '$mdToast', '$log', function($rootScope, $routeParams, $mdToast, $log) {
     var self = this;
     var activityId = $routeParams.activityId;
 
@@ -119,6 +119,14 @@ angular.module('continuaApp')
       title: "D",
       active: true
     };
+
+    self.model.providers = [{
+      image: "http://www.cc-carrefour-petrer.com/wp-content/uploads/2015/09/Sprinter_600.jpg",
+      link: "www.google.es"
+    }, {
+      image: "http://www.sprinter.es/images/landing3/cole_3.jpg",
+      link: "www.google.es"
+    }];
 
     self.showToast = function(msg) {
       $mdToast.show(

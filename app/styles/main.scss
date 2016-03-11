@@ -1,6 +1,5 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/"; // bower:scss
- @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
- // endbower
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss"; // endbower
 @import "compass/css3";
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
 .browsehappy {
@@ -125,6 +124,29 @@ md-content.content-wrapper {
   }
 }
 .details-container {
+  #horizontal-container {
+    height: 200px;
+  }
+  .provider-item {
+    width: 120%;
+    overflow-x: visible;
+  }
+  .repeated-item {
+    border-right: 1px solid #ddd;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 200px;
+    padding-top: 35px;
+    text-align: center;
+    width: 100%;
+    background-size: cover;
+  }
+  .md-virtual-repeat-offsetter {
+    width: 100% !important;
+  }
+  md-virtual-repeat-container {
+    border: solid 1px grey;
+  }
   background-color: #DDD;
   p {
     text-align: justify;
