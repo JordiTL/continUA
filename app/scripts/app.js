@@ -39,6 +39,11 @@ angular
         controller: 'DetailsCtrl',
         controllerAs: 'details'
       })
+      .when('/details/:activityID/comments', {
+        templateUrl: 'views/comments.html',
+        controller: 'CommentsCtrl',
+        controllerAs: 'comments'
+      })
       .otherwise({
         redirectTo: '/'
       });

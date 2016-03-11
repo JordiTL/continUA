@@ -8,9 +8,9 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('DetailsCtrl', ['$rootScope','$routeParams', '$mdToast', '$log', function($rootScope, $routeParams, $mdToast, $log) {
+  .controller('DetailsCtrl', ['$rootScope','$routeParams', '$mdToast', '$log', '$location', function($rootScope, $routeParams, $mdToast, $log, $location) {
     var self = this;
-    var activityId = $routeParams.activityId;
+    self.activityID = $routeParams.activityID;
 
     self.model = {};
     self.model.main = {};
@@ -143,7 +143,7 @@ angular.module('continuaApp')
     };
 
     self.commentAction = function() {
-
+      $location.path('/details/'+self.activityID+'/comments');
     };
 
     self.loadMenuEntries = function() {
