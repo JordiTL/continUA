@@ -33,13 +33,15 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
-      })
-      .when('/details/:activityID', {
+      }).when('/details/:activityID', {
         templateUrl: 'views/details.html',
         controller: 'DetailsCtrl',
         controllerAs: 'details'
-      })
-      .otherwise({
+      }).when('/community', {
+        templateUrl: 'views/community.html',
+        controller: 'CommunityCtrl',
+        controllerAs: 'community'
+      }).otherwise({
         redirectTo: '/'
       });
   }]);
