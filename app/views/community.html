@@ -1,3 +1,31 @@
 <div flex-xs layout="column" id="community-container">
-  TODO
+  <md-list flex>
+    <div flex ng-repeat="item in community.model">
+      <md-list-item class="md-3-line">
+        <img ng-src="{{item.image}}" class="md-avatar" alt="{{item.owner}}"/>
+        <div class="md-list-item-text" layout="column">
+          <div layout="row">
+            <div flex>
+              <h3>{{ item.title }}</h3>
+            </div>
+            <div style="text-align: right;" flex>
+              {{item.people}}
+              <md-icon md-font-set="material-icons">person</md-icon>
+            </div>
+          </div>
+          <div>{{item.location}}</div>
+          <div layout="row">
+            <div flex="70">{{ item.date | date:"EEEE dd 'de' MMMM HH:mm" }}</div>
+            <div flex="30" class="community-switch" layout="column">
+              <md-switch class="md-secondary" ng-model="item.like" ng-change="community.addPeople($index)">
+                <span ng-show="item.like">Ir</span>
+                <span ng-hide="item.like">No ir</span>
+              </md-switch>
+            </div>
+          </div>
+        </div>
+      </md-list-item>
+      <md-divider ></md-divider>
+    </div>
+  </md-list>
 </div>

@@ -1,6 +1,5 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/"; // bower:scss
- @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
- // endbower
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss"; // endbower
 @import "compass/css3";
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
 .browsehappy {
@@ -111,14 +110,14 @@ md-content.content-wrapper {
 }
 .search-bar-container {
   md-input-container {
-    width : 100%;
+    width: 100%;
     label {
       color: white !important;
       opacity: 0.5 !important;
       font-size: 0.8em !important;
     }
     input {
-      width : 100%;
+      width: 100%;
       color: white !important;
       margin-top: -8px !important;
     }
@@ -264,5 +263,11 @@ md-content.content-wrapper {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
+  }
+}
+#community-container {
+  .community-switch {
+    text-align: right;
+    position: relative !important;
   }
 }
