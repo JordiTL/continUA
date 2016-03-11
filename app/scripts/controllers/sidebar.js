@@ -8,7 +8,7 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('SideBarCtrl', ['$rootScope', '$mdSidenav', '$log', function($rootScope, $mdSidenav, $log) {
+  .controller('SideBarCtrl', ['$rootScope', '$mdSidenav', '$log', '$location', function($rootScope, $mdSidenav, $log, $location) {
     var self = this;
 
     self.model = {};
@@ -39,5 +39,10 @@ angular.module('continuaApp')
         .then(function() {
           $log.debug("toggle LEFT is done");
         });
+    };
+
+    self.community = function() {
+      self.close();
+      $location.path("/community");
     };
   }]);

@@ -1,4 +1,26 @@
 
-<div flex-xs layout="column" class="comments-container" ng-init="comments.loadMenuEntries()">
-  asd
+<div flex-xs layout="column" style="padding-bottom:50px !important;" class="comments-container" ng-init="comments.loadMenuEntries()">
+  <md-card >
+    <div ng-style="{'background-image': 'url({{comments.model.main.image}})'}" class="md-card-image"></div>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{comments.model.main.title}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-content>
+      <md-list flex>
+        <md-list-item class="md-3-line" ng-repeat="item in comments.commentsList">
+          <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+          <div class="md-list-item-text" layout="column">
+            <h3>{{item.name}}</h3>
+            <h4>{{item.title}}</h4>
+            <p>{{item.content}}</p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-card>
+  <md-button class="md-fab md-warn md-button md-ink-ripple" style="position:fixed;bottom:10px;right:10px;" aria-label="Add comment" ng-click="details.favAction()">
+    <md-icon md-font-set="material-icons">add</md-icon>
+  </md-button>
 </div>
