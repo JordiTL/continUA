@@ -1,5 +1,5 @@
-
 <div flex-xs layout="column" class="details-container" ng-init="details.loadMenuEntries()">
+
   <md-card>
     <div ng-style="{'background-image': 'url({{details.model.main.image}})'}" class="md-card-image"></div>
     <md-card-title>
@@ -10,10 +10,10 @@
     <md-card-content>
       <p>{{details.model.main.briefDescription}}</p>
       <div class="join-button-wrapper">
-      <md-button class="md-raised md-primary" aria-label="Comments" ng-click="details.commentAction()">
-        ¡Inscríbeme!
-      </md-button>
-    </div>
+        <md-button class="md-raised md-primary" aria-label="Comments" ng-click="details.commentAction()">
+          ¡Inscríbeme!
+        </md-button>
+      </div>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
       <md-button class="md-icon-button" aria-label="Favorite" ng-click="details.favAction()">
@@ -76,6 +76,19 @@
           <md-progress-linear md-mode="determinate" value="{{score.value}}"></md-progress-linear>
         </div>
       </div>
+    </md-card-content>
+  </md-card>
+
+  <md-card style="margin: 0;background-color: #DDD;">
+    <md-card-title style="margin-left: 8px;margin-right: 8px;background: #FFF;margin-top: 8px;box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);border-radius: 2px;">
+      <md-card-title-text>
+        <span class="md-headline">¿Dónde encontrar el material?</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content style="padding: 0px !important;">
+      <md-virtual-repeat-container id="horizontal-container" md-orient-horizontal>
+        <div md-virtual-repeat="provider in details.model.providers" class="repeated-item" flex ng-style="{'background-image': 'url({{provider.image}})'}"></div>
+      </md-virtual-repeat-container>
     </md-card-content>
   </md-card>
 
