@@ -1,4 +1,4 @@
-<div flex-xs layout="column" id="community-container">
+<div flex-xs layout="column" id="community-container"  ng-init="community.loadMenuEntries();">
   <md-list flex>
     <div flex ng-repeat="item in community.model">
       <md-list-item class="md-3-line">

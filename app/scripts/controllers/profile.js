@@ -24,4 +24,17 @@ angular.module('continuaApp')
     self.model.fecha = new Date(1990, 4, 10);
     self.model.image = user.picture;
 
+    self.loadMenuEntries = function() {
+      $log.info('Loading main menu entries');
+      var menuEntries = [];
+      menuEntries[0] = {
+        'label': '¿Quiénes somos?',
+        'icon': 'people',
+        'callback': function() {
+          $location.path("/about");
+        }
+      };
+      $rootScope.$broadcast("TopMenu.changeEntries", menuEntries);
+    };
+
   }]);
