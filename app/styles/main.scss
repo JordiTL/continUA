@@ -1,6 +1,6 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/"; // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
+ @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+ // endbower
 @import "compass/css3";
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
 .browsehappy {
@@ -119,7 +119,6 @@ md-content.content-wrapper {
     }
     input {
       width: 100%;
-      color: white !important;
       margin-top: -8px !important;
     }
   }
@@ -318,5 +317,17 @@ md-content.content-wrapper {
   .community-switch {
     text-align: right;
     position: relative !important;
+  }
+}
+
+.search-nav-bar{
+  background-color: #FFF;
+
+  md-icon{
+    color:#444 !important;
+  }
+
+  input{
+    color:#444 !important;
   }
 }
