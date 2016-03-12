@@ -29,17 +29,17 @@
     </div>
   </div>
 
-  <div class="md-toolbar-tools" ng-show="navbarCtrl.showSearchBar">
+  <div class="md-toolbar-tools search-nav-bar" ng-show="navbarCtrl.showSearchBar">
 
     <div flex="20">
       <md-button class="md-icon-button" aria-label="Settings" ng-click="navbarCtrl.back()">
-        <md-icon md-font-set="material-icons">keyboard_arrow_left</md-icon>
+        <md-icon md-font-set="material-icons">arrow_back</md-icon>
       </md-button>
     </div>
     <div class="search-bar-container" flex="80">
       <md-input-container>
         <label></label>
-        <input ng-model="navbarCtrl.searchText" ng-keyup="navbarCtrl.search($event)">
+        <input ng-model="navbarCtrl.searchText" placeholder="Buscar..." ng-keyup="navbarCtrl.search($event)">
       </md-input-container>
     </div>
   </div>

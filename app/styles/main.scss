@@ -120,7 +120,6 @@ md-content.content-wrapper {
     }
     input {
       width: 100%;
-      color: white !important;
       margin-top: -8px !important;
     }
   }
@@ -326,5 +325,17 @@ md-content.content-wrapper {
   .community-switch {
     text-align: right;
     position: relative !important;
+  }
+}
+
+.search-nav-bar{
+  background-color: #FFF;
+
+  md-icon{
+    color:#444 !important;
+  }
+
+  input{
+    color:#444 !important;
   }
 }
