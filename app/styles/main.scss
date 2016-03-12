@@ -329,13 +329,13 @@ md-content.content-wrapper {
   background-color: #DDDDDD;
   min-height: 100%;
   .profile-wrapper .profile-image {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     @include border-radius(100%);
     margin: 30px auto;
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 100px;
+    background-size: 150px;
   }
 }
 .search-nav-bar {

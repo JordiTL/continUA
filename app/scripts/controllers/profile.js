@@ -8,12 +8,20 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('ProfileCtrl', ['$rootScope', '$log', function($rootScope, $log) {
+  .controller('ProfileCtrl', ['$rootScope', '$log', 'userCredentials', '$location', function($rootScope, $log, userCredentials, $location) {
     var self = this;
+
+    var user = userCredentials.getUser();
+
+    if (Object.keys(user).length === 0 && JSON.stringify(user) === JSON.stringify({})) {
+      $location.path("/");
+    }
+
     self.model = {};
     self.model.email = "svetlanaliunco@gmail.com";
-    self.model.name = "Svetlana Liunco";
-    self.model.gender = "Mujer";
+    self.model.name = user.name;
+    self.model.gender = user.gender === "male" ? "Hombre" : "Mujer";
     self.model.fecha = new Date(1990, 4, 10);
+    self.model.image = user.picture;
 
   }]);
