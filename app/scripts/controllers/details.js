@@ -172,7 +172,7 @@ angular.module('continuaApp')
         'label': 'Inscripción',
         'icon': 'help',
         'callback': function() {
-          $log.info('Inscripción called');
+          $location.path("/register");
         }
       };
       menuEntries[1] = {
@@ -180,6 +180,13 @@ angular.module('continuaApp')
         'icon': 'share_arrow',
         'callback': function() {
           $log.info('Compartir called');
+        }
+      };
+      menuEntries[2] = {
+        'label': '¿Quiénes somos?',
+        'icon': 'people',
+        'callback': function() {
+          $location.path("/about");
         }
       };
 
