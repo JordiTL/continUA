@@ -46,6 +46,10 @@ angular
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',
         controllerAs: 'profile'
+      }).when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
       }).otherwise({
         redirectTo: '/'
       });
