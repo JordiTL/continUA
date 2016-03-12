@@ -8,9 +8,9 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('DetailsCtrl', ['$rootScope', '$routeParams', '$mdToast', '$log', function($rootScope, $routeParams, $mdToast, $log) {
+  .controller('DetailsCtrl', ['$rootScope', '$routeParams', '$mdToast', '$log', 'dataService', function($rootScope, $routeParams, $mdToast, $log, dataService) {
     var self = this;
-    var activityId = $routeParams.activityId;
+    self.activityId = $routeParams.activityID;
 
     self.model = {};
     self.model.main = {};
@@ -18,6 +18,8 @@ angular.module('continuaApp')
     self.model.main.favorited = false;
     self.model.main.briefDescription = "¿Qué es el yoga? Esta suele ser la primera pregunta que se hace la gente que quiere empezar a practicar el yoga para conseguir todos los beneficios del yoga. El yoga es una disciplina, más que un deporte, porque no trata solo de cultivar el cuerpo, sino también la mente, y el alma. El yoga nació en la India y es una práctica de meditación muy común en el hinduismo.";
     self.model.main.image = "http://www.belgranoathletic.club/wp-content/uploads/2014/07/yoga.jpg";
+
+
 
     self.model.goals = [];
     self.model.goals[0] = "Alcanzar el equilibrio emocional";
@@ -51,71 +53,76 @@ angular.module('continuaApp')
 
     self.model.keywords = ["keyword1", "key2", "a long keyword", "This is other keyword", "keyword 3"];
 
+    self.model.calls = [];
 
-    self.model.groups = [];
+    self.model.calls[0] = {};
 
-    self.model.groups[0] = {};
-    self.model.groups[0].title = "Group 1";
-    self.model.groups[0].time = "20:00 - 21:00";
-    self.model.groups[0].lessons = [];
-    self.model.groups[0].lessons[0] = {
+    self.model.calls[0].groups = [];
+
+    self.model.calls[0].groups[0] = {};
+    self.model.calls[0].groups[0].title = "Group 1";
+    self.model.calls[0].groups[0].time = "20:00 - 21:00";
+    self.model.calls[0].groups[0].lessons = [];
+    self.model.calls[0].groups[0].lessons[0] = {
       title: "L",
       active: false
     };
-    self.model.groups[0].lessons[1] = {
+    self.model.calls[0].groups[0].lessons[1] = {
       title: "M",
       active: true
     };
-    self.model.groups[0].lessons[2] = {
+    self.model.calls[0].groups[0].lessons[2] = {
       title: "X",
       active: false
     };
-    self.model.groups[0].lessons[3] = {
+    self.model.calls[0].groups[0].lessons[3] = {
       title: "J",
       active: true
     };
-    self.model.groups[0].lessons[4] = {
+    self.model.calls[0].groups[0].lessons[4] = {
       title: "V",
       active: true
     };
-    self.model.groups[0].lessons[5] = {
+    self.model.calls[0].groups[0].lessons[5] = {
       title: "S",
       active: false
     };
-    self.model.groups[0].lessons[6] = {
+    self.model.calls[0].groups[0].lessons[6] = {
       title: "D",
       active: false
     };
 
-    self.model.groups[1] = {};
-    self.model.groups[1].title = "Group 2";
-    self.model.groups[1].time = "16:00 - 17:00";
-    self.model.groups[1].lessons = [];
-    self.model.groups[1].lessons[0] = {
+    self.model.activeCall = 0;
+
+    self.model.calls[0].groups[1] = {};
+    self.model.calls[0].groups[1].title = "Group 2";
+    self.model.calls[0].groups[1].time = "16:00 - 17:00";
+    self.model.calls[0].groups[1].lessons = [];
+    self.model.calls[0].groups[1].lessons[0] = {
       title: "L",
       active: true
     };
-    self.model.groups[1].lessons[1] = {
+    self.model.calls[0].groups[1].lessons[1] = {
       title: "M",
       active: false
     };
-    self.model.groups[1].lessons[2] = {
+    self.model.calls[0].groups[1].lessons[2] = {
       title: "X",
       active: true
     };
-    self.model.groups[1].lessons[3] = {
+    self.model.calls[0].groups[1].lessons[3] = {
       title: "J",
       active: false
     };
-    self.model.groups[1].lessons[4] = {
+    self.model.calls[0].groups[1].lessons[4] = {
       title: "V",
       active: true
     };
-    self.model.groups[1].lessons[5] = {
+    self.model.calls[0].groups[1].lessons[5] = {
       title: "S",
       active: false
     };
-    self.model.groups[1].lessons[6] = {
+    self.model.calls[0].groups[1].lessons[6] = {
       title: "D",
       active: true
     };
@@ -175,4 +182,101 @@ angular.module('continuaApp')
       $rootScope.$broadcast("TopMenu.changeEntries", menuEntries);
     };
 
-  }]);
+    var loadMainCard = function(title, favorited, desc, image) {
+      self.model.main.title = title;
+      self.model.main.favorited = favorited;
+      self.model.main.briefDescription = desc;
+      self.model.main.image = image;
+    };
+
+    var loadGoals = function(goals) {
+      self.model.goals = goals;
+    };
+
+
+
+    var loadGroups = function(call, groups) {
+      $log.info(groups);
+      for (var i = 0; i < groups.length; i++) {
+        call.groups[i] = {};
+
+        call.groups[i].title = groups[i].level;
+
+        call.groups[i].time = groups[i].time;
+        call.groups[i].lessons = [];
+
+        var days = ["L", "M", "X", "J", "V", "S", "D"];
+        var splittedDays = groups[i].days.split(' ');
+        for (var j = 0; j < days.length; j++) {
+
+          if ($.inArray(days[j], splittedDays) !== -1) {
+            call.groups[i].lessons[j] = {
+              title: days[j],
+              active: true
+            };
+          } else {
+            call.groups[i].lessons[j] = {
+              title: days[j],
+              active: false
+            };
+          }
+        }
+      }
+    };
+
+    var loadCalls = function(calls) {
+      self.model.calls = [];
+      for (var i = 0; i < calls.length; i++) {
+        self.model.calls[i] = {};
+        self.model.calls[i].beginsOn = calls[i].beginsOn;
+        self.model.calls[i].endsOn = calls[i].endsOn;
+        self.model.calls[i].regBeginsOn = calls[i].regBeginsOn;
+        self.model.calls[i].regEndsOn = calls[i].regEndsOn;
+        self.model.calls[i].groups = [];
+        self.model.calls[i].index = i;
+        self.model.calls[i].price = calls[i].price;
+
+
+        loadGroups(self.model.calls[i], calls[i].groups);
+
+      }
+
+    };
+
+    var loadScores = function(scores) {
+      self.model.scores = scores;
+
+      for (var i = 0; i < self.model.scores.length; i++) {
+        self.model.scores[i].value = self.model.scores[i].value * 100;
+      }
+    };
+
+    var loadKeywords = function(keywords) {
+      self.model.keywords = keywords;
+    };
+
+    self.loadData = function(id) {
+      dataService.findActivity(id,
+        function(data) {
+          var entity = JSON.parse(data.json);
+          loadMainCard(entity.type, false, entity.description, 'images/' + entity.imageUrl);
+          loadGoals(entity.goals);
+          loadCalls(entity.calls);
+          loadScores(entity.scores);
+          loadKeywords(entity.keywords);
+        },
+        function() {
+          $log.error("Cannot locate activity");
+        }
+      );
+    };
+  }]).directive('backImg', function() {
+    return function(scope, element, attrs) {
+      attrs.$observe('backImg', function(value) {
+        element.css({
+          'background-image': 'url(' + value + ')',
+          'background-size': 'cover'
+        });
+      });
+    };
+  });
