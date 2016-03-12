@@ -8,16 +8,23 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('SideBarCtrl', ['$rootScope', '$mdSidenav', '$log', '$location', function($rootScope, $mdSidenav, $log, $location) {
+  .controller('SideBarCtrl', ['$rootScope', '$mdSidenav', '$log', '$location', 'userCredentials',function($rootScope, $mdSidenav, $log, $location, userCredentials) {
     var self = this;
 
     self.model = {};
-    self.model.email = 'svetlanaliunco@gmail.com';
-    self.model.profilePhoto = 'images/profile_image_test.jpg';
+    self.model.email = "";
+    self.model.profilePhoto = "";
 
+    $log.info('user: ' + JSON.stringify(userCredentials.getUser()));
     $rootScope.$on('SideBarLeft.toggle', function(event) {
       $log.debug('Event \'' + event + '\' receipt');
       self.toggle();
+    });
+
+    $rootScope.$on('SideBarLeft.userlogin', function(event) {
+      self.model = {};
+      self.model.email = userCredentials.getUser().name;
+      self.model.profilePhoto = userCredentials.getUser().picture;
     });
 
     self.close = function() {
