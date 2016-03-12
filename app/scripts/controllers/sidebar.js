@@ -55,4 +55,9 @@ angular.module('continuaApp')
       self.close();
       $location.path("/");
     };
+
+    self.profile = function() {
+      self.close();
+      $location.path("/profile");
+    };
   }]);
