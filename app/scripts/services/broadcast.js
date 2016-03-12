@@ -18,9 +18,15 @@ angular.module('continuaApp').factory('broadcastService', function($rootScope) {
     sharedService.broadcastItem('NavBar.hide');
   };
 
+  sharedService.notifyLogin = function(){
+    sharedService.broadcastItem('SideBarLeft.userlogin');
+  };
+
   sharedService.broadcastItem = function(event) {
     $rootScope.$broadcast(event);
   };
+
+
 
   return sharedService;
 });
