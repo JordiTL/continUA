@@ -1,0 +1,22 @@
+<div flex-xs layout="column" id="register-container">
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Intrucciones</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <div>Las inscripciones de las ligas internas y torneos universitarios se realizarán a través del Campus Virtual, y se tendrá en cuenta lo siguiente:</div>
+      <md-list flex>
+        <div flex ng-repeat="instruction in register.model.instructions">
+          <md-list-item class="md-3-line">
+            <div class="md-list-item-text instruction" layout="column">
+              {{$index + 1}}: {{instruction}}
+            </div>
+          </md-list-item>
+          <md-divider ></md-divider>
+        </div>
+      </md-list>
+    </md-card-content>
+  </md-card>
+</div>

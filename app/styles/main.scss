@@ -1,6 +1,6 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/"; // bower:scss
- @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
- // endbower
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
 @import "compass/css3";
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
 .browsehappy {
@@ -338,7 +338,6 @@ md-content.content-wrapper {
     background-size: 150px;
   }
 }
-
 #about-container {
   background-color: #DDDDDD;
   min-height: 100%;
@@ -349,8 +348,16 @@ md-content.content-wrapper {
     background-size: 250px 185px;
   }
 }
-.search-nav-ba
-.search-nav-bar {
+#register-container {
+  .instruction {
+    text-align: justify;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    font-family:Helvetica Neue, Helvetica, Arial;
+    line-height: 1;
+  }
+}
+.search-nav-ba .search-nav-bar {
   background-color: #FFF;
   md-icon {
     color: #444 !important;

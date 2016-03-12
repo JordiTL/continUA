@@ -8,7 +8,7 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('DetailsCtrl', ['$rootScope', '$routeParams', '$mdToast', '$log', 'dataService', function($rootScope, $routeParams, $mdToast, $log, dataService) {
+  .controller('DetailsCtrl', ['$rootScope', '$routeParams', '$mdToast', '$log', 'dataService','$location', function($rootScope, $routeParams, $mdToast, $log, dataService, $location) {
     var self = this;
     self.activityId = $routeParams.activityID;
 
@@ -159,6 +159,10 @@ angular.module('continuaApp')
 
     self.commentAction = function() {
 
+    };
+
+    self.registerAction = function() {
+      $location.path("/register");
     };
 
     self.loadMenuEntries = function() {
