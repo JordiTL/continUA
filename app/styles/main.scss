@@ -353,9 +353,11 @@ md-content.content-wrapper {
     text-align: justify;
     padding-top: 15px !important;
     padding-bottom: 15px !important;
-    font-family:Helvetica Neue, Helvetica, Arial;
+    font-family: Helvetica Neue, Helvetica, Arial;
     line-height: 1;
   }
+  background-color: #DDDDDD;
+  min-height: 100%;
 }
 .search-nav-ba .search-nav-bar {
   background-color: #FFF;
