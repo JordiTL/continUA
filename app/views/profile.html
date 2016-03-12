@@ -1,0 +1,59 @@
+<div flex-xs layout="column" id="profile-container">
+  <div flex class="profile-wrapper" layout-align="center">
+    <div class="profile-image" ng-style="{'background-image': 'url(images/profile_image_test.jpg)'}"></div>
+  </div>
+
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Información</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <md-list flex>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text" layout="column">
+            <div layout="row">
+              <div flex>
+                <h3>Nombre</h3>
+              </div>
+              {{profile.model.name}}
+            </div>
+          </div>
+        </md-list-item>
+        <md-divider ></md-divider>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text" layout="column">
+            <div layout="row">
+              <div flex>
+                <h3>Correo</h3>
+              </div>
+              {{profile.model.email}}
+            </div>
+          </div>
+        </md-list-item>
+        <md-divider ></md-divider>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text" layout="column">
+            <div layout="row">
+              <div flex>
+                <h3>Género</h3>
+              </div>
+              {{profile.model.gender}}
+            </div>
+          </div>
+        </md-list-item>
+        <md-divider ></md-divider>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text" layout="column">
+            <div layout="row">
+              <div flex>
+                <h3>Fecha</h3>
+              </div>
+              {{ profile.model.fecha | date:"dd 'de' MMMM 'de' yyyy" }}
+            </div>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>

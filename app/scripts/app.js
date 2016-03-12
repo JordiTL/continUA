@@ -42,6 +42,10 @@ angular
         templateUrl: 'views/community.html',
         controller: 'CommunityCtrl',
         controllerAs: 'community'
+      }).when('/profile', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl',
+        controllerAs: 'profile'
       }).otherwise({
         redirectTo: '/'
       });
