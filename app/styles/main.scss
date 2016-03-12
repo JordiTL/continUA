@@ -119,7 +119,6 @@ md-content.content-wrapper {
     }
     input {
       width: 100%;
-      color: white !important;
       margin-top: -8px !important;
     }
   }
@@ -337,5 +336,14 @@ md-content.content-wrapper {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100px;
+  }
+}
+.search-nav-bar {
+  background-color: #FFF;
+  md-icon {
+    color: #444 !important;
+  }
+  input {
+    color: #444 !important;
   }
 }
