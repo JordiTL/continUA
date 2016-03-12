@@ -1,5 +1,6 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/"; // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss"; // endbower
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
 @import "compass/css3";
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
 .browsehappy {
@@ -251,6 +252,31 @@ md-content.content-wrapper {
     margin: 10px;
     font-weight: bold;
   }
+  .score-bar-wrapper {
+    margin-bottom: 20px;
+  }
+  .score-bar-title {
+    font-weight: bold;
+  }
+  .price-container{
+    text-align: center;
+    width:100%;
+  .price {
+    background: rgb(224,224,224);
+    color: rgb(66,66,66);
+    cursor: default;
+    border-radius: 16px;
+    display: inline-block;
+    margin: 8px 8px 0 0;
+    padding: 0 12px;
+    box-sizing: border-box;
+    max-width: 100%;
+    position: relative;
+    font-size: 3em;
+    margin:0 auto;
+    text-align: center;
+  }
+}
 }
 #login-container {
   position: relative;
