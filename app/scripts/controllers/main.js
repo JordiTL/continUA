@@ -28,6 +28,7 @@ angular.module('continuaApp')
     //self.activities.push(fencing);
     //self.activities.push(soccer);
     self.filter = '';
+    self.filteredActivities=[];
 
     self.showNavBar = function() {
       sharedService.showNavBar();
