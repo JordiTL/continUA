@@ -33,6 +33,10 @@ angular.module('continuaApp')
       this.model.menuEntries = entries;
     };
 
+    self.showVerticalMenu = function() {
+      return this.model.menuEntries === [];
+    }
+
     /* -------------- EVENT HANDLING ---------------*/
     $rootScope.$on('TopMenu.showButton', function(event, show) {
       $log.debug('Event \'' + event + '\' receipt');

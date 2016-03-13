@@ -28,7 +28,7 @@ angular.module('continuaApp')
     //self.activities.push(fencing);
     //self.activities.push(soccer);
     self.filter = '';
-    self.filteredActivities=[];
+    self.filteredActivities = [];
 
     self.showNavBar = function() {
       sharedService.showNavBar();
@@ -71,6 +71,19 @@ angular.module('continuaApp')
       );
     };
 
+    self.loadMenuEntries = function() {
+      $log.info('Loading main menu entries');
+      var menuEntries = [];
+      menuEntries[0] = {
+        'label': '¿Quiénes somos?',
+        'icon': 'people',
+        'callback': function() {
+          $location.path("/about");
+        }
+      };
+
+      $rootScope.$broadcast("TopMenu.changeEntries", menuEntries);
+    };
 
     $rootScope.$on('Search', function() {
       self.filter = sharedService.message;

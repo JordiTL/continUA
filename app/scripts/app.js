@@ -17,7 +17,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngMaterial'
+    'ngMaterial',
+    'googleplus'
   ]).config(function($mdThemingProvider) {
     $mdThemingProvider.theme('continua').primaryPalette('indigo');
     $mdThemingProvider.setDefaultTheme('continua');
@@ -47,7 +48,24 @@ angular
         templateUrl: 'views/community.html',
         controller: 'CommunityCtrl',
         controllerAs: 'community'
+      }).when('/profile', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl',
+        controllerAs: 'profile'
+      }).when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
+      }).when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl',
+        controllerAs: 'register'
       }).otherwise({
         redirectTo: '/'
       });
-  }]);
+  }]).config(['GooglePlusProvider', function(GooglePlusProvider) {
+     GooglePlusProvider.init({
+        clientId: '356972876334-p4v281t3gqnpf7hu4cnak47i4kbtfsba.apps.googleusercontent.com',
+        apiKey: 'dP5fFl1nOPUK_9Vb-wlD0-3V'
+     });
+}]);

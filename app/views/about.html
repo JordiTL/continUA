@@ -1,0 +1,28 @@
+<div flex-xs layout="column" id="about-container">
+  <div flex class="profile-image" layout-align="center" ng-style="{'background-image': 'url(images/main-logo.png)'}">
+  </div>
+
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">¿Quiénes somos?</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <md-list flex>
+        <div flex ng-repeat="item in about.model">
+          <md-list-item class="md-3-line">
+            <div class="md-list-item-text" layout="column">
+              <div flex>
+                <h3 style="font-weight: bold;">{{item.name}}</h3>
+              </div>
+              <div flex style="font-size: 0.9em !important; color: black !important;">
+                {{item.description}}
+              </div>
+            </div>
+          </md-list-item>
+          <md-divider ></md-divider>
+        </div>
+      </md-list>
+    </md-card-content>
+  </md-card>

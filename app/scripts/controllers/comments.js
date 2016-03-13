@@ -107,7 +107,8 @@ angular.module('continuaApp')
         //$scope.status = 'You decided to name your dog ' + result + '.';
         console.log(result);
       }, function() {
-        //Se cancela la introducción de comentario
+        //Se cancela la introducción de comentarioYAR
+
       });
     };
 

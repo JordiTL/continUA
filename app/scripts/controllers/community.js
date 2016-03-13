@@ -49,5 +49,23 @@ angular.module('continuaApp')
       }
     };
 
-
+    self.loadMenuEntries = function() {
+      $log.info('Loading community menu entries');
+      var menuEntries = [];
+      menuEntries[0] = {
+        'label': 'Crear post',
+        'icon': 'comment',
+        'callback': function() {
+          $log.info("Añadir nuevo comentario.");
+        }
+      };
+      menuEntries[1] = {
+        'label': '¿Quiénes somos?',
+        'icon': 'people',
+        'callback': function() {
+          $location.path("/about");
+        }
+      };
+      $rootScope.$broadcast("TopMenu.changeEntries", menuEntries);
+    };
   }]);
