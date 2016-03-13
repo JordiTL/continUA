@@ -123,7 +123,15 @@ md-content.content-wrapper {
     }
   }
 }
+
+.sentiment-icon{
+  width:100px !important;
+}
+
 .details-container {
+
+
+
   #horizontal-container {
     height: 200px;
   }
@@ -382,4 +390,8 @@ md-content.content-wrapper {
   input {
     color: #444 !important;
   }
+}
+
+md-menu-item > .md-button{
+  display:block !important;
 }

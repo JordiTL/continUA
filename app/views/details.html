@@ -108,6 +108,19 @@
   <md-card>
     <md-card-title>
       <md-card-title-text>
+        <span class="md-headline">Sentimiento</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+      <img class="sentiment-icon" src="images/positive.png" aria-label="Cake" ng-show="details.model.sentiment === 1"/>
+      <img class="sentiment-icon" src="images/negative.png" aria-label="Cake" ng-show="details.model.sentiment === 2"/>
+      <img class="sentiment-icon" src="images/neutral.png" aria-label="Cake" ng-show="details.model.sentiment === 0"/>
+    </md-card-content>
+  </md-card>
+
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
         <span class="md-headline">Etiquetas</span>
       </md-card-title-text>
     </md-card-title>

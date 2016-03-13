@@ -89,8 +89,8 @@ angular.module('continuaApp').service('dataService', function($http) {
         },
         data: {
           content : content,
-          category: 1,
-          intensity: 1,
+          category: category,
+          intensity: intensity,
           author: 'http://continua-jtorregrosa.rhcloud.com/author/' + userId,
           activity: 'http://continua-jtorregrosa.rhcloud.com/activity/' + activityId
         }
@@ -121,6 +121,25 @@ angular.module('continuaApp').service('dataService', function($http) {
       });
   };
 
+  this.analyzeText = function(text, callbackFunc, errorCallbackFunc){
+    $http({
+        method: 'POST',
+        url: 'http://sentiment-jtorregrosa.rhcloud.com/sentiment',
+        headers: {
+          'Content-Type': 'text/plain'
+        },
+        data: text
+      })
+      .success(function(data) {
+        console.log(data);
+        var categoryStr = data.scoreCategories[0].name;
+        var intensity = data.scoreCategories[0].value;
+        callbackFunc(categoryStr, intensity);
+      }).error(function() {
+        errorCallbackFunc();
+      });
+  };
+
   this.userExists = function(userId, callbackFunc) {
     $http({
         method: 'GET',
@@ -143,6 +162,32 @@ angular.module('continuaApp').service('dataService', function($http) {
 
         callbackFunc(found, user);
       });
+  };
+
+  this.findActivitySentiment = function(id, callbackFunc, errorCallbackFunc) {
+    $http({
+      method: 'GET',
+      url: 'http://continua-jtorregrosa.rhcloud.com/activity/' + id + '/comments'
+    }).success(function(data) {
+      var comments = data._embedded.comment;
+
+      var scores = [0.0,0.0,0.0];
+
+      for(var i = 0; i < comments.length; i++){
+        scores[comments[i].category] = scores[comments[i].category] + comments[i].intensity;
+      }
+
+      if(scores[0] > scores[1] && scores[0] + scores[2]){
+        callbackFunc(0);
+      }else if(scores[1] > scores[0] && scores[1] + scores[2]){
+        callbackFunc(1);
+      }else{
+        callbackFunc(2);
+      }
+
+    }).error(function() {
+      errorCallbackFunc();
+    });
   };
 
   this.findActivityComments = function(id, callbackFunc, errorCallbackFunc) {
