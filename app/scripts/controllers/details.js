@@ -20,7 +20,7 @@ angular.module('continuaApp')
     self.model.main.briefDescription = "¿Qué es el yoga? Esta suele ser la primera pregunta que se hace la gente que quiere empezar a practicar el yoga para conseguir todos los beneficios del yoga. El yoga es una disciplina, más que un deporte, porque no trata solo de cultivar el cuerpo, sino también la mente, y el alma. El yoga nació en la India y es una práctica de meditación muy común en el hinduismo.";
     self.model.main.image = "http://www.belgranoathletic.club/wp-content/uploads/2014/07/yoga.jpg";
 
-
+    self.model.sentiment = 0;
 
     self.model.goals = [];
     self.model.goals[0] = "Alcanzar el equilibrio emocional";
@@ -291,6 +291,10 @@ angular.module('continuaApp')
           $log.error("Cannot locate activity");
         }
       );
+
+      dataService.findActivitySentiment(id, function(sentiment){
+        self.model.sentiment = sentiment;
+      }, function(){});
 
       dataService.isFavorited(userCredentials.getUserId(), id, function(data) {
           self.model.main.favorited = true;

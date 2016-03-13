@@ -163,15 +163,24 @@ angular.module('continuaApp')
         var userId = userCredentials.getUserId();
         var activityId = self.activityId;
         var content = result;
-        var category = 1;
-        var intensity = 1;
-        dataService.createComment(userId, activityId, content, category, intensity, function(){
-          self.commentsList = [];
-          self.loadDataComments(self.activityId);
+
+        dataService.analyzeText(content, function(categoryStr, intensity){
+          var category = 0;
+
+          if(categoryStr === 'positive'){
+            category = 1;
+          }else if(categoryStr === 'negative'){
+            category = 2;
+          }
+          dataService.createComment(userId, activityId, content, category, intensity, function(){
+            self.commentsList = [];
+            self.loadDataComments(self.activityId);
+          }, function(){
+
+          });
         }, function(){
 
         });
-        console.log(result);
       }, function() {
         //Se cancela la introducción de comentarioYAR
 
