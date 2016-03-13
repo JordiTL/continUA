@@ -66,6 +66,7 @@ angular
   }]).config(['GooglePlusProvider', function(GooglePlusProvider) {
      GooglePlusProvider.init({
         clientId: '356972876334-p4v281t3gqnpf7hu4cnak47i4kbtfsba.apps.googleusercontent.com',
-        apiKey: 'dP5fFl1nOPUK_9Vb-wlD0-3V'
+        apiKey: 'dP5fFl1nOPUK_9Vb-wlD0-3V',
+        scopes: 'https://www.googleapis.com/auth/plus.profile.emails.read https://www.googleapis.com/auth/plus.login'
      });
 }]);
