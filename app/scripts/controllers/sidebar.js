@@ -53,6 +53,11 @@ angular.module('continuaApp')
       $location.path("/community");
     };
 
+    self.myactivities = function() {
+      self.close();
+      $location.path("/myactivities");
+    };
+
     self.home = function() {
       self.close();
       $location.path("/main");

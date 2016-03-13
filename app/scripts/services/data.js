@@ -15,6 +15,19 @@ angular.module('continuaApp').service('dataService', function($http) {
     });
   };
 
+  this.findAllFavorites = function(userId, callbackFunc, errorCallbackFunc) {
+    $http({
+      method: 'GET',
+      url: 'http://continua-jtorregrosa.rhcloud.com/user/' + userId + '/favorites',
+      params: 'size=100'
+    }).success(function(data) {
+      // With the data succesfully returned, call our callback
+      callbackFunc(data);
+    }).error(function() {
+      errorCallbackFunc();
+    });
+  };
+
   this.findActivity = function(id, callbackFunc, errorCallbackFunc) {
     $http({
       method: 'GET',
