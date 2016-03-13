@@ -8,7 +8,7 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('DetailsCtrl', ['$rootScope', '$routeParams', '$mdToast', '$log', 'dataService','$location', function($rootScope, $routeParams, $mdToast, $log, dataService, $location) {
+  .controller('DetailsCtrl', ['$rootScope', '$routeParams', '$mdToast', '$log', 'dataService', '$location','userCredentials', function($rootScope, $routeParams, $mdToast, $log, dataService, $location, userCredentials) {
     var self = this;
     self.activityId = $routeParams.activityID;
 
@@ -148,9 +148,11 @@ angular.module('continuaApp')
 
       if (self.model.main.favorited) {
         self.showToast("Actividad marcada como favorita");
+
       } else {
         self.showToast("Actividad desmarcada como favorita");
       }
+      self.markAsFavorite(self.model.main.favorited);
     };
 
     self.shareAction = function() {
@@ -266,6 +268,14 @@ angular.module('continuaApp')
       self.model.keywords = keywords;
     };
 
+    self.markAsFavorite = function(flag) {
+      if (flag) {
+          dataService.markAsFavorite(userCredentials.getUserId(), self.activityId, function(){}, function(){});
+      } else {
+          dataService.unmarkAsFavorite(userCredentials.getUserId(), self.activityId, function(){}, function(){});
+      }
+    }
+
     self.loadData = function(id) {
       dataService.findActivity(id,
         function(data) {
@@ -278,6 +288,14 @@ angular.module('continuaApp')
         },
         function() {
           $log.error("Cannot locate activity");
+        }
+      );
+
+      dataService.isFavorited(userCredentials.getUserId(), id, function(data) {
+          self.model.main.favorited = true;
+        },
+        function() {
+          self.model.main.favorited = false;
         }
       );
     };
