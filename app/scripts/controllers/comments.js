@@ -8,9 +8,9 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('CommentsCtrl', ['$rootScope','$routeParams', '$mdToast', '$log', '$mdDialog', function($rootScope, $routeParams, $mdToast, $log, $mdDialog) {
+  .controller('CommentsCtrl', ['$rootScope','$routeParams', '$mdToast', '$log', '$mdDialog', 'dataService', function($rootScope, $routeParams, $mdToast, $log, $mdDialog, dataService) {
     var self = this;
-    self.activityID = $routeParams.activityID;
+    self.activityId = $routeParams.activityID;
 
     self.model = {};
     self.model.main = {};
@@ -18,8 +18,8 @@ angular.module('continuaApp')
     self.model.main.favorited = false;
     self.model.main.briefDescription = "¿Qué es el yoga? Esta suele ser la primera pregunta que se hace la gente que quiere empezar a practicar el yoga para conseguir todos los beneficios del yoga. El yoga es una disciplina, más que un deporte, porque no trata solo de cultivar el cuerpo, sino también la mente, y el alma. El yoga nació en la India y es una práctica de meditación muy común en el hinduismo.";
     self.model.main.image = "http://www.belgranoathletic.club/wp-content/uploads/2014/07/yoga.jpg";
-
-    self.commentsList = [
+    self.commentsList = [];
+    /*self.commentsList = [
       {
         name: 'Briant',
         title: 'Esta actividad es una mierda',
@@ -40,7 +40,7 @@ angular.module('continuaApp')
         title: 'Esta actividad mola muxo',
         content: 'Soy un marikita like Paco and George y el camarero me pone muxisimo.'
       }
-    ]
+    ];*/
 
     self.model.keywords = ["keyword1", "key2", "a long keyword", "This is other keyword", "keyword 3"];
 
@@ -91,6 +91,62 @@ angular.module('continuaApp')
       $rootScope.$broadcast("TopMenu.changeEntries", menuEntries);
     };
 
+    var loadMainCard = function(title, favorited, desc, image) {
+      self.model.main.title = title;
+      self.model.main.favorited = favorited;
+      self.model.main.briefDescription = desc;
+      self.model.main.image = image;
+    };
+
+
+    self.loadData = function(id) {
+      console.log('loaded ' + id);
+      dataService.findActivity(id,
+        function(data) {
+          console.log(data);
+          var entity = JSON.parse(data.json);
+          console.log(entity.imageUrl);
+          loadMainCard(entity.type, false, entity.description, 'images/' + entity.imageUrl);
+        },
+        function() {
+          $log.error("Cannot locate activity");
+        }
+      );
+    };
+
+    self.loadDataComments = function(id) {
+      dataService.findActivityComments(id,
+        function(data) {
+          var comments = data._embedded.comment;
+          comments.forEach(function(a) {
+            var linkSplitted = a._links['self'].href.split('/');
+            var id = linkSplitted[linkSplitted.length - 1];
+
+            var comment = {
+              id: id,
+              content: a.content,
+              createdAt: a.createdAt,
+              userEmail: '',
+              userImage: ''
+            };
+            self.commentsList.push(comment);
+            // Hack realizado para actualizar el comentario de forma asincrona
+            // y asi que se muestre la imagen del usuario del comentario.
+            dataService.findCommentUser(id,function(data,comment){
+              console.log(data);
+              console.log('comment dentro: ' + comment)
+              comment.userEmail = data.content.email;
+              comment.userImage = data.content.image;
+            },function(){},comment);
+
+          });
+        },
+        function() {
+          $log.error("Cannot locate comments");
+        }
+      );
+    };
+
     self.showPrompt = function(ev) {
       console.log('asd');
       console.log($mdDialog);
@@ -112,4 +168,13 @@ angular.module('continuaApp')
       });
     };
 
-  }]);
+  }]).directive('backImg', function() {
+    return function(scope, element, attrs) {
+      attrs.$observe('backImg', function(value) {
+        element.css({
+          'background-image': 'url(' + value + ')',
+          'background-size': 'cover'
+        });
+      });
+    };
+  });
