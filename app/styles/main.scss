@@ -11,11 +11,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 html {
   height: 100%;
-  font-family: 'Roboto', sans-serif;
+
 }
 body {
   padding: 0;
   height: 100%;
+  font-family: 'Roboto', sans-serif !important;
 }
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -111,20 +112,42 @@ md-content.content-wrapper {
 }
 .search-bar-container {
   md-input-container {
-    width : 100%;
+    width: 100%;
     label {
       color: white !important;
       opacity: 0.5 !important;
       font-size: 0.8em !important;
     }
     input {
-      width : 100%;
-      color: white !important;
+      width: 100%;
       margin-top: -8px !important;
     }
   }
 }
 .details-container {
+  #horizontal-container {
+    height: 200px;
+  }
+  .provider-item {
+    width: 120%;
+    overflow-x: visible;
+  }
+  .repeated-item {
+    border-right: 1px solid #ddd;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 200px;
+    padding-top: 35px;
+    text-align: center;
+    width: 100%;
+    background-size: cover;
+  }
+  .md-virtual-repeat-offsetter {
+    width: 100% !important;
+  }
+  md-virtual-repeat-container {
+    border: solid 1px grey;
+  }
   background-color: #DDD;
   p {
     text-align: justify;
@@ -229,6 +252,31 @@ md-content.content-wrapper {
     margin: 10px;
     font-weight: bold;
   }
+  .score-bar-wrapper {
+    margin-bottom: 20px;
+  }
+  .score-bar-title {
+    font-weight: bold;
+  }
+  .price-container{
+    text-align: center;
+    width:100%;
+  .price {
+    background: rgb(224,224,224);
+    color: rgb(66,66,66);
+    cursor: default;
+    border-radius: 16px;
+    display: inline-block;
+    margin: 8px 8px 0 0;
+    padding: 0 12px;
+    box-sizing: border-box;
+    max-width: 100%;
+    position: relative;
+    font-size: 3em;
+    margin:0 auto;
+    text-align: center;
+  }
+}
 }
 #login-container {
   position: relative;
@@ -256,6 +304,13 @@ md-content.content-wrapper {
 }
 #main-container {
   background-color: #DDD;
+  min-height:100%;
+.fail-search{
+  color:#666;
+  text-align: center;
+  padding-top: 50px;
+}
+
   md-card-title {
     padding: 5px !important;
   }
@@ -278,5 +333,24 @@ md-content.content-wrapper {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
+  }
+}
+
+#community-container {
+  .community-switch {
+    text-align: right;
+    position: relative !important;
+  }
+}
+
+.search-nav-bar{
+  background-color: #FFF;
+
+  md-icon{
+    color:#444 !important;
+  }
+
+  input{
+    color:#444 !important;
   }
 }

@@ -8,7 +8,7 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('CommentsCtrl', ['$rootScope','$routeParams', '$mdToast', '$log', function($rootScope, $routeParams, $mdToast, $log) {
+  .controller('CommentsCtrl', ['$rootScope','$routeParams', '$mdToast', '$log', '$mdDialog', function($rootScope, $routeParams, $mdToast, $log, $mdDialog) {
     var self = this;
     self.activityID = $routeParams.activityID;
 
@@ -89,6 +89,26 @@ angular.module('continuaApp')
       };
 
       $rootScope.$broadcast("TopMenu.changeEntries", menuEntries);
+    };
+
+    self.showPrompt = function(ev) {
+      console.log('asd');
+      console.log($mdDialog);
+      var confirm = $mdDialog.prompt()
+          .title('¿Qué opinas de esta actividad?')
+          .textContent('Comunica al resto de la comunidad tu opinión sobre esta actividad.')
+          .placeholder('Comentario')
+          .ariaLabel('Comentario')
+          .clickOutsideToClose(true)
+          .targetEvent(ev)
+          .ok('Enviar!')
+          .cancel('Cancelar');
+      $mdDialog.show(confirm).then(function(result) {
+        //$scope.status = 'You decided to name your dog ' + result + '.';
+        console.log(result);
+      }, function() {
+        //Se cancela la introducción de comentario
+      });
     };
 
   }]);

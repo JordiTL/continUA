@@ -8,10 +8,10 @@
     </md-toolbar>
     <md-content layout-padding>
       <md-menu-content width="4">
-        <md-menu-item>
+        <md-menu-item ng-click="sidebarCtrl.home()">
           <md-button>
-            <md-icon md-font-set="material-icons">favorite</md-icon>
-            Mis favoritos
+            <md-icon md-font-set="material-icons">home</md-icon>
+            Inicio
           </md-button>
         </md-menu-item>
         <md-menu-item>
@@ -33,7 +33,7 @@
           </md-button>
         </md-menu-item>
         <md-menu-divider></md-menu-divider>
-        <md-menu-item>
+        <md-menu-item ng-click="sidebarCtrl.exit()">
           <md-button>
             <md-icon md-font-set="material-icons">exit_to_app</md-icon>
             Salir

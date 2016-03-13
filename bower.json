@@ -11,7 +11,8 @@
     "angular-resource": "^1.5.0",
     "angular-route": "^1.5.0",
     "angular-sanitize": "^1.5.0",
-    "angular-material": "^1.0.6"
+    "angular-material": "master",
+    "angular-i18n": "^1.5.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0"
@@ -26,5 +27,8 @@
         "dist/js/bootstrap.js"
       ]
     }
+  },
+  "resolutions": {
+    "angular-material": "master"
   }
 }

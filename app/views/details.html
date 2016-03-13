@@ -1,19 +1,24 @@
+<div flex-xs layout="column" class="details-container" ng-init="details.loadMenuEntries(); details.loadData(details.activityId)">
 
-<div flex-xs layout="column" class="details-container" ng-init="details.loadMenuEntries()">
   <md-card>
-    <div ng-style="{'background-image': 'url({{details.model.main.image}})'}" class="md-card-image"></div>
+    <div back-img="{{details.model.main.image}}" class="md-card-image"></div>
+
     <md-card-title>
       <md-card-title-text>
         <span class="md-headline">{{details.model.main.title}}</span>
       </md-card-title-text>
     </md-card-title>
     <md-card-content>
+      <h4>Convocatorias</h4>
+      <md-radio-group ng-model="details.model.activeCall">
+        <md-radio-button ng-value="call.index" class="md-primary" ng-repeat="call in details.model.calls">{{call.beginsOn}} - {{call.endsOn}}</md-radio-button>
+      </md-radio-group>
       <p>{{details.model.main.briefDescription}}</p>
       <div class="join-button-wrapper">
-      <md-button class="md-raised md-primary" aria-label="Comments" ng-click="details.commentAction()">
-        ¡Inscríbeme!
-      </md-button>
-    </div>
+        <md-button class="md-raised md-primary" aria-label="Comments" ng-click="details.commentAction()">
+          ¡Inscríbeme!
+        </md-button>
+      </div>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
       <md-button class="md-icon-button" aria-label="Favorite" ng-click="details.favAction()">
@@ -31,6 +36,14 @@
   </md-card>
 
   <md-card>
+    <md-card-content>
+      <div class="price-container">
+        <span class="price">{{details.model.calls[details.model.activeCall].price}} <md-icon md-font-set="material-icons">euro_symbol</md-icon></span>
+      </div>
+    </md-card-content>
+  </md-card>
+
+  <md-card>
     <md-card-title>
       <md-card-title-text>
         <span class="md-headline">Objetivos</span>
@@ -43,14 +56,14 @@
     </md-card-content>
   </md-card>
 
-  <md-card>
+  <md-card ng-show="details.model.calls[details.model.activeCall].groups.length > 0">
     <md-card-title>
       <md-card-title-text>
         <span class="md-headline">Días</span>
       </md-card-title-text>
     </md-card-title>
     <md-card-content>
-      <div class="days-wrapper" ng-repeat="group in details.model.groups">
+      <div class="days-wrapper" ng-repeat="group in details.model.calls[details.model.activeCall].groups">
         <span class="md-subhead">{{group.title}}</span>
         <div class="day" ng-class="{ 'day-active': day.active }" ng-repeat="day in group.lessons">
           {{day.title}}
@@ -69,13 +82,26 @@
     </md-card-title>
     <md-card-content>
       <div class="score-wrapper" ng-repeat="score in details.model.scores">
-        <span class="score-bar-title">{{score.title}}</span>
+        <span class="score-bar-title">{{score.key}}</span>
         <span class="score-bar-label-left">Poco</span>
         <span class="score-bar-label-right">Mucho</span>
         <div class="score-bar-wrapper">
           <md-progress-linear md-mode="determinate" value="{{score.value}}"></md-progress-linear>
         </div>
       </div>
+    </md-card-content>
+  </md-card>
+
+  <md-card style="margin: 0;background-color: #DDD;">
+    <md-card-title style="margin-left: 8px;margin-right: 8px;background: #FFF;margin-top: 8px;box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);border-radius: 2px;">
+      <md-card-title-text>
+        <span class="md-headline">¿Dónde encontrar el material?</span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content style="padding: 0px !important;">
+      <md-virtual-repeat-container id="horizontal-container" md-orient-horizontal>
+        <div md-virtual-repeat="provider in details.model.providers" class="repeated-item" flex ng-style="{'background-image': 'url({{provider.image}})'}"></div>
+      </md-virtual-repeat-container>
     </md-card-content>
   </md-card>
 
