@@ -67,6 +67,28 @@ angular.module('continuaApp').service('dataService', function($http) {
       });
   };
 
+  this.createComment = function(userId, activityId, content, category, intensity, callbackFunc, errorCallbackFunc){
+    $http({
+        method: 'POST',
+        url: 'http://continua-jtorregrosa.rhcloud.com/comment',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          content : content,
+          category: 1,
+          intensity: 1,
+          author: 'http://continua-jtorregrosa.rhcloud.com/author/' + userId,
+          activity: 'http://continua-jtorregrosa.rhcloud.com/activity/' + activityId
+        }
+      })
+      .success(function(data) {
+        callbackFunc(data);
+      }).error(function() {
+        errorCallbackFunc();
+      });
+  };
+
   this.createUser = function(userId, userImage, callbackFunc, errorCallbackFunc){
     $http({
         method: 'POST',

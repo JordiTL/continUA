@@ -8,7 +8,7 @@
  * Controller of the continuaApp
  */
 angular.module('continuaApp')
-  .controller('CommentsCtrl', ['$rootScope','$routeParams', '$mdToast', '$log', '$mdDialog', 'dataService', function($rootScope, $routeParams, $mdToast, $log, $mdDialog, dataService) {
+  .controller('CommentsCtrl', ['$rootScope','$routeParams', '$mdToast', '$log', '$mdDialog', 'dataService','userCredentials', function($rootScope, $routeParams, $mdToast, $log, $mdDialog, dataService, userCredentials) {
     var self = this;
     self.activityId = $routeParams.activityID;
 
@@ -160,7 +160,17 @@ angular.module('continuaApp')
           .ok('Enviar!')
           .cancel('Cancelar');
       $mdDialog.show(confirm).then(function(result) {
-        //$scope.status = 'You decided to name your dog ' + result + '.';
+        var userId = userCredentials.getUserId();
+        var activityId = self.activityId;
+        var content = result;
+        var category = 1;
+        var intensity = 1;
+        dataService.createComment(userId, activityId, content, category, intensity, function(){
+          self.commentsList = [];
+          self.loadDataComments(self.activityId);
+        }, function(){
+
+        });
         console.log(result);
       }, function() {
         //Se cancela la introducción de comentarioYAR
@@ -168,13 +178,4 @@ angular.module('continuaApp')
       });
     };
 
-  }]).directive('backImg', function() {
-    return function(scope, element, attrs) {
-      attrs.$observe('backImg', function(value) {
-        element.css({
-          'background-image': 'url(' + value + ')',
-          'background-size': 'cover'
-        });
-      });
-    };
-  });
+  }]);
