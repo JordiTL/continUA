@@ -319,6 +319,21 @@ md-content.content-wrapper {
     background-size: 100%;
   }
 }
+
+// comments
+.comments-container {
+  background-color: #DDD;
+  p {
+    text-align: justify;
+  }
+  .md-card-image {
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+  }
+}
+
 #community-container {
   .community-switch {
     text-align: right;

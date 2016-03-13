@@ -9,6 +9,7 @@
  */
 angular.module('continuaApp')
   .controller('DetailsCtrl', ['$rootScope', '$routeParams', '$mdToast', '$log', 'dataService', '$location','userCredentials', function($rootScope, $routeParams, $mdToast, $log, dataService, $location, userCredentials) {
+
     var self = this;
     self.activityId = $routeParams.activityID;
 
@@ -160,7 +161,7 @@ angular.module('continuaApp')
     };
 
     self.commentAction = function() {
-
+      $location.path('/details/'+self.activityId+'/comments');
     };
 
     self.registerAction = function() {

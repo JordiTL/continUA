@@ -38,7 +38,13 @@ angular
         templateUrl: 'views/details.html',
         controller: 'DetailsCtrl',
         controllerAs: 'details'
-      }).when('/community', {
+      })
+      .when('/details/:activityID/comments', {
+        templateUrl: 'views/comments.html',
+        controller: 'CommentsCtrl',
+        controllerAs: 'comments'
+      })
+      .when('/community', {
         templateUrl: 'views/community.html',
         controller: 'CommunityCtrl',
         controllerAs: 'community'
