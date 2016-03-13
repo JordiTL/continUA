@@ -1,0 +1,14 @@
+<div flex-xs layout="column" id="community-container" ng-init="myactivities.loadMenuEntries();myactivities.loadFavorites()">
+  <md-list flex>
+    <div flex ng-repeat="item in myactivities.model">
+      <md-list-item class="md-3-line" ng-click="myactivities.goToDetails(item.id)">
+        <img ng-src="{{item.image}}" class="md-avatar" alt="{{item.owner}}"/>
+        <div class="md-list-item-text" layout="column">
+              <h3>{{ item.title }}</h3>
+              <h4>{{ item.year }}</h4>
+            </div>
+      </md-list-item>
+      <md-divider ></md-divider>
+    </div>
+  </md-list>
+</div>

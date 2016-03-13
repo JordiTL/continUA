@@ -19,7 +19,7 @@ angular.module('continuaApp')
       description : "Ingeniería Informática Superior (Plan 2001)"
     },{
       name : "Jorge Torregrosa Lloret",
-      description : "Grando Ingeniería Multimedia"
+      description : "Grado Ingeniería Multimedia"
     }];
 
   }]);
